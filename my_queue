@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+struct Mahasiswa {
+    string nama;
+    double ipk;
+    Mahasiswa() {
+
+    }
+    Mahasiswa(string nm, double val) {
+        nama = nm;
+        ipk = val;
+    }
+};
+
+
+struct MyQueue {
+    int front, rear;
+    static const int MAX_QSIZE = 10;
+    Mahasiswa item[MAX_QSIZE];
+
+    MyQueue() {
+        front = rear = 0;
+    }
+
+    bool isEmpty() {
+        return front == rear;
+    }
+
+    bool isFull() {
+        return front == (rear + 1) % MAX_QSIZE;
+    }
+
+    void enqueue(string nama, double ipk) {
+        if (isFull()) {
+            cout << "Queue is full" << endl;
+            return;
+        }
+        rear = (rear + 1) % MAX_QSIZE;
+        item[rear] = Mahasiswa(nama, ipk);
+    }
+
+    Mahasiswa dequeue() {
+        if (isEmpty()) {
+            cout << "Queue is empty\n";
+            return Mahasiswa("", 0);
+        }
+        front = (front + 1) % MAX_QSIZE;
+        return item[front];
+    }
+};
+
+int main(){
+	MyQueue q;
+	return 0;
+}

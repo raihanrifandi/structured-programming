@@ -87,6 +87,27 @@ void MyList::hapusDepan() {
     }
 }
 
+void MyList::hapusBelakang() {
+    if (isEmpty()) {
+        cout << "List kosong" << endl;
+        return;
+    }
+
+    if (head->next == NULL) {
+        delete head;
+        head = NULL;
+        return;
+    }
+
+    Node* second_last = head;
+    while (second_last->next->next != NULL) {
+        second_last = second_last->next;
+    }
+
+    delete (second_last->next);
+    second_last->next = NULL;
+}
+
 int main(){
   MyList ML;
   ML.tambahDepan(5);

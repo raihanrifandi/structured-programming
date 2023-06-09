@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+struct Mahasiswa {
+    string nama;
+    double ipk;
+    Mahasiswa() {
+
+    }
+    Mahasiswa(string nm, double val) {
+        nama = nm;
+        ipk = val;
+    }
+};
+
+struct MyStack {
+    static const int STACK_SIZE = 10;
+    Mahasiswa item[STACK_SIZE];
+    int top;
+
+    MyStack() {
+        top = -1;
+    }
+
+    bool isEmpty() {
+        return top < 0;
+    }
+
+    bool isFull() {
+        return top >= STACK_SIZE - 1;
+    }
+
+    void push(string nama, double ipk) {
+        if (isFull()) {
+            cout << "Full";
+        }
+        else {
+            item[++top] = Mahasiswa(nama, ipk);
+        }
+    }
+
+    Mahasiswa pop() {
+        if (isEmpty()) {
+            cout << "empty";
+            return Mahasiswa("", 0);
+        }
+        return item[top--];
+    }
+};
+
+int main() {
+    MyStack st;
+    return 0;
+}

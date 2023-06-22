@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the number of strings: ";
+    cin >> n;
+    cin.ignore(); 
+
+    string inputStrings[n];
+
+    for (int i = 0; i < n; i++) {
+        cout << "Enter string " << i + 1 << ": ";
+        getline(cin, inputStrings[i]);
+
+        if (inputStrings[i].length() > 20) {
+            inputStrings[i] = inputStrings[i].substr(0, 20);
+        }
+    }
+
+    cout << "Lengths of the strings are: " << endl;
+    for (int i = 0; i < n; i++) {
+        cout << "Length of string " << i + 1 << " is: " << inputStrings[i].length() << endl;
+    }
+
+    return 0;
+}
